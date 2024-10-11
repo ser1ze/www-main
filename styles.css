@@ -235,47 +235,71 @@ filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45);
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45) brightness(70%);
 }
+
 .menu-item-active {
-    
     font-family: 'Mulish';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
-  
     background: linear-gradient(20.82deg, #08466B -43.96%, #37779D -5.6%, #71BDEB 43.21%, #37779D 109.46%, #08466B 157.91%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
     filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45);
     overflow: hidden;
-    
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex: 1 0 auto; 
+    transition: all 0.2s ease-in-out;
 }
 
+
 .menu-item-active:hover {
-    filter: none; 
-    background: #191919;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    animation: reverseActiveEffect 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes reverseActiveEffect {
+    0% {
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45);
+        background: linear-gradient(20.82deg, #08466B -43.96%, #37779D -5.6%, #71BDEB 43.21%, #37779D 109.46%, #08466B 157.91%);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    25% {
+        filter: none; 
+        -webkit-text-fill-color: #191919; 
+    }
+    50% {
+        -webkit-text-fill-color: #191919; 
+    }
+    
+    100% {
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45); 
+        background: linear-gradient(20.82deg, #08466B -43.96%, #37779D -5.6%, #71BDEB 43.21%, #37779D 109.46%, #08466B 157.91%);
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
 
 .menu-item-active:active {
-    transform: scale(0.95);
+    transform: scale(0.90);
     transform-origin: center;
-
+    background: linear-gradient(161deg, #08466b 0%, #37779d 19%, #71bdeb 43.18%, #37779d 76%, #08466b 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45) brightness(70%);
 }
 
 .menu-item-active.fast-click {
-    transform: scale(0.90);
-    transform-origin: center;
-
+    transform: scale(0.95);
+    transform-origin: center; 
+    background: linear-gradient(161deg, #08466b 0%, #37779d 19%, #71bdeb 43.18%, #37779d 76%, #08466b 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9)) contrast(1.45) brightness(70%);
 }
 
 .currency-lang-nav {
@@ -582,6 +606,7 @@ margin-bottom: 2px;
 }
 .payment-navigation-btn.active {
     background: #20272b;
+   
     
 }
 
@@ -596,6 +621,7 @@ background: linear-gradient(161deg, #08466b 0%, #37779d 19%, #71bdeb 43.18%, #37
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
+
 
 }
 .payment-navigation-btn.active.fast-click {
@@ -1288,7 +1314,7 @@ z-index: 0
     
 }
 .modal-content.onload-animation {
-    animation: modal-zoom-in 0.7s ease-in-out; 
+    animation: modal-zoom-in 1s ease-in-out; 
 }
 .modal-content:after {
     content: '';
