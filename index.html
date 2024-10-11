@@ -509,13 +509,13 @@
             <button class="payment-navigation-btn active">
                 <span class="btn-text active" >Мой аккаунт</span>
             </button>
-            <button class="payment-navigation-btn " data-delay="400">
+            <button class="payment-navigation-btn" data-delay="400">
                 <span class="btn-text" data-delay="400">В подарок</span>
             </button>
-            <button class="payment-navigation-btn active" data-delay="340">
-                <span class="btn-text active" data-delay="340">Организациям</span>
+            <button class="payment-navigation-btn" data-delay="340">
+                <span class="btn-text" data-delay="340">Организациям</span>
             </button>
-            <button class="payment-navigation-btn " data-delay="170">
+            <button class="payment-navigation-btn" data-delay="170">
                 <span class="btn-text" data-delay="170">Контакты</span>
             </button>
             <div id="loginModal" class="modal">
@@ -892,27 +892,36 @@
       <div class="circle"></div>
     </div>
     <script>
-   window.onload = function() {
+window.onload = function() {
     const nav = document.getElementById("payment-navigation");
     if (nav) {
-       
-        nav.onmousemove = e => {
-          
-            for (const button of document.getElementsByClassName("payment-navigation-btn")) {
-                const rect = button.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+        
+        const addMouseEffect = (buttons) => {
+            for (const button of buttons) {
+                button.onmousemove = e => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
 
-                button.style.setProperty("--mouse-x", `${x}px`);
-                button.style.setProperty("--mouse-y", `${y}px`);
+                    
+                    button.style.setProperty("--mouse-x", `${x}px`);
+                    button.style.setProperty("--mouse-y", `${y}px`);
+                };
             }
         };
+
+        
+        const paymentButtons = document.getElementsByClassName("payment-navigation-btn");
+        addMouseEffect(paymentButtons);
+
+        
+        const buyButtons = document.getElementsByClassName("buy-button");
+        addMouseEffect(buyButtons);
     } else {
         console.log("Element not found");
     }
-    
-   
 }
+
 
       
       </script>

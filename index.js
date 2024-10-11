@@ -814,3 +814,40 @@ window.addEventListener('load', function() {
   });
 });
 
+const button = document.querySelector('.payment-navigation-btn:nth-of-type(3)');
+let longPressTimeout;
+let isLongPress = false; 
+
+function handleLongPress() {
+    button.classList.add('long-press');
+    isLongPress = true; 
+}
+
+button.addEventListener('mousedown', () => {
+    if (isLongPress) {
+        button.classList.remove('long-press');
+        isLongPress = false; 
+    } else {
+        longPressTimeout = setTimeout(handleLongPress, 500); 
+    }
+});
+
+button.addEventListener('mouseup', () => {
+    clearTimeout(longPressTimeout);
+});
+
+button.addEventListener('touchstart', () => {
+    if (isLongPress) {
+        button.classList.remove('long-press');
+        isLongPress = false;
+    } else {
+        longPressTimeout = setTimeout(handleLongPress, 500);
+    }
+});
+
+button.addEventListener('touchend', () => {
+    clearTimeout(longPressTimeout);
+});
+
+
+

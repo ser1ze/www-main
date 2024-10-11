@@ -509,15 +509,6 @@ margin-right: 20px;
   position: relative
     
 }
-.payment-navigation-btn.active:nth-child(3).fast-click {
-   
-}
-.payment-navigation-btn:nth-of-type(3) .btn-text.active.fast-click {
-    background: rgba(96, 165, 206, 0.6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
- }
  
 .payment-navigation-btn {
     background: none;
@@ -555,7 +546,7 @@ transition: transform 150ms ease, box-shadow 150ms ease;
 
 .payment-navigation-btn.fast-click {
     background: #2a2a2a;
-    box-shadow: inset 2px 2px 2px 0 rgba(7, 26, 38, 0.5), inset -2px -2px 2px 0 rgba(7, 26, 38, 0.5);
+    box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 .btn-text.fast-click {
     transform: scale(0.95); 
@@ -596,6 +587,33 @@ z-index: 200;
 margin-bottom: 2px;
 
 }
+.payment-navigation-btn:nth-of-type(3) {
+    transition: all 0.3s ease;
+}
+
+/* Текст кнопки по умолчанию (синий градиент) */
+.payment-navigation-btn:nth-of-type(3) .btn-text {
+    
+    transition: all 0.3s ease-in-out
+}
+
+/* Состояние при долгом зажатии (без класса fast-click) */
+.payment-navigation-btn:nth-of-type(3).long-press .btn-text {
+   background: #4A738C; 
+   background-clip: text;
+}
+
+/* Состояние после отпускания (когда fast-click не активен) */
+.payment-navigation-btn:nth-of-type(3).long-press:not(.fast-click) .btn-text {
+    background: linear-gradient(161deg, #08466b 0%, #37779d 19%, #71bdeb 43.18%, #37779d 76%, #08466b 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.payment-navigation-btn:nth-of-type(3).long-press:not(.fast-click) {
+    background: #20272b; /* Синий фон после отпускания */
+}
 
 .payment-navigation-btn:nth-child(1){
     border-radius: 5px 0 0 5px !important;
@@ -625,15 +643,16 @@ background-clip: text;
 
 }
 .payment-navigation-btn.active.fast-click {
-    background: #2a2a2a;
-    box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2), inset -2px -2px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 2px 0 rgba(7, 26, 38, 0.5), inset -2px -2px 2px 0 rgba(7, 26, 38, 0.5);
+
+
 }
 .btn-text.active.fast-click {
     font-weight: 700;
     font-size: 20px;
     line-height: 120%;
     text-align: center;
-    background: linear-gradient(297deg, #696969 0%, #fff 50%, #696969 100%);
+   
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1255,9 +1274,28 @@ z-index: 0
     -webkit-text-fill-color: transparent; 
 }
 
+.buy-button::before {
+    background: radial-gradient(
+        250px circle at var(--mouse-x) var(--mouse-y), 
+        #c7c7c738,
+        transparent 30%
+    );
+    border-radius: inherit; 
+    content: "";
+    height: 100%;
+    left: 0px; 
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    opacity: 0; 
+    transition: opacity 300ms ease; 
+    z-index: 20;
+}
 
 
-
+.buy-button:hover::before {
+    opacity: 1; 
+}
 
 .registration {
     padding-right: 50px;
