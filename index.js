@@ -849,5 +849,23 @@ button.addEventListener('touchend', () => {
     clearTimeout(longPressTimeout);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.payment-navigation-btn');
+
+  buttons.forEach(button => {
+      button.addEventListener('click', function () {
+         
+          buttons.forEach(btn => {
+              btn.classList.remove('active');
+              btn.querySelector('.btn-text').classList.remove('active'); 
+          });
+
+       
+          this.classList.add('active');
+          this.querySelector('.btn-text').classList.add('active');
+          
+      });
+  });
+});
 
 
